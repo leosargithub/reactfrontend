@@ -55,6 +55,10 @@ console.log(blog, "Blog")
             <Link to={"/"} className="blog-btn" onClick={deleteBlog}>
               delete
             </Link>
+            <Link to={`/update/${blog._id}`} className="blog-btn">
+                             {" "}
+                             update
+                           </Link>
           </div>
         </div>
       </div>

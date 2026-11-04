@@ -12,7 +12,7 @@ const navigate = useNavigate()
     try {
       const response = await axios.get("http://localhost:3000/blogs");
 
-      setBlogs(response.data.blogs);
+      setBlogs(response.data.data);
     } catch (error) {
        alert("Something is wrong")
       
@@ -50,9 +50,16 @@ console.log(blogs,"Blogs")
                  {" "}
                  Read More →
                </Link>
-               <button className="blog-btn" onClick={()=>deleteBlog(blog._id)}>
+               <button
+                 className="blog-btn"
+                 onClick={() => deleteBlog(blog._id)}
+               >
                  delete
                </button>
+               <Link to={`/update/${blog._id}`} className="blog-btn">
+                 {" "}
+                 update
+               </Link>
              </div>
            </div>
          );
