@@ -7,9 +7,15 @@ const Blogcard = () => {
 const [blogs, setBlogs] = useState([])
 
   const fetchBlogs = async () => {
-    const response = await axios.get("http://localhost:3000/blogs");
+    try {
+      const response = await axios.get("http://localhost:3000/blogs");
+
+      setBlogs(response.data.blogs);
+    } catch (error) {
+       alert("Something is wrong")
+      
+    }
     
-    setBlogs(response.data.blogs)
 
   };
   useEffect(() => {
