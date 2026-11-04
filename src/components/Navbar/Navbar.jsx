@@ -1,7 +1,10 @@
 import React from 'react'
 import './Navbar.css'
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
   
   return (
     <nav className="navbar">
@@ -11,10 +14,10 @@ const Navbar = () => {
 
       <ul className="nav-links">
         <li>
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
         </li>
         <li>
-          <a href="#about">About</a>
+          <a onClick={()=>navigate('/createBlog')}>Crate Blogs</a>
         </li>
         <li>
           <a href="#skills">Skills</a>

@@ -25,22 +25,24 @@ const [blogs, setBlogs] = useState([])
 console.log(blogs,"Blogs")
 
   return (
-    <section className="blog-card">
+    <section className="blog-cards">
+
       {blogs.map((blog)=> {
-         return(
-         <div className="blog-body">
-           <span className="blog-category">{blog.title}</span>
+         return (
+           <div className="blog-card" key={blog._id}>
+             <div className="blog-body">
+               <span className="blog-category">{blog.title}</span>
 
-           <h4 className="blog-title">{blog.subTitle}</h4>
+               <h4 className="blog-title">{blog.subTitle}</h4>
 
-           <p className="blog-text">
-            {blog.description}
-           </p>
+               <p className="blog-text">{blog.description}</p>
 
-           <a href="#" className="blog-btn">
-             Read More →
-           </a>
-         </div>)
+               <a href="#" className="blog-btn">
+                 Read More →
+               </a>
+             </div>
+           </div>
+         );
          
 
       })}
