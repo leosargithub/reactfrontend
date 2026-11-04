@@ -11,15 +11,29 @@ const CreateBlog = () => {
   // const [title,setTitle] = useState("")
   // const [subTitle, setSubTitle] = useState("");
   // const [description, setDescription] = useState("");
+  const [data, setData] = useState({
+    title : "",
+    subTitle : "",
+    description : ""
+  })
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setData({
+      ...data, 
+      [name]: value
+    })
+
+  }
 
   const createBlog = async(e) => {
     e.preventDefault()
 
-    const formData = new FormData(e.currentTarget)
-    // console.log(e.currentTarget, "currentTarget")
+    // const formData = new FormData(e.currentTarget)
+    // // console.log(e.currentTarget, "currentTarget")
 
-     const data = Object.fromEntries(formData)
-     console.log(data)
+    //  const data = Object.fromEntries(formData)
+    //  console.log(data)
 
     //console.log(...formData)
     // console.log(formData.get('title'), "formData")
@@ -33,7 +47,7 @@ const CreateBlog = () => {
     // send above states data to api
     const response = await axios.post("http://localhost:3000/createBlog", data);
     if(response.status == 200){
-      //alert(response.data.message)
+      alert(response.data.message)
       navigate("/")
     } else
     {
@@ -48,7 +62,7 @@ const CreateBlog = () => {
   return (
     <div>
       <Navbar></Navbar>
-        
+
       <div className="form-container">
         <h2>Create Blog</h2>
 
@@ -58,7 +72,8 @@ const CreateBlog = () => {
             <input
               type="text"
               placeholder="Enter blog title"
-              name='title'
+              name="title"
+              onChange={handleChange}
               //  onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -67,8 +82,9 @@ const CreateBlog = () => {
             <label>Subtitle</label>
             <input
               type="text"
-              name='subTitle'
+              name="subTitle"
               placeholder="Enter blog subtitle"
+              onChange={handleChange}
               // onChange={(e) => setSubTitle(e.target.value)}
             />
           </div>
@@ -77,8 +93,9 @@ const CreateBlog = () => {
             <label>Description</label>
             <textarea
               rows="6"
-              name='description'
+              name="description"
               placeholder="Write your blog description..."
+              onChange={handleChange}
               // onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
